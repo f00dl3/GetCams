@@ -6,10 +6,9 @@ LCPUTF=$(cat /dev/shm/GetCams/CPUTF.txt)
 LOJCTF=$(cat /dev/shm/OJC.txt)
 
 (
-timeout --kill-after=15 15 avconv -rtsp_transport tcp -analyzeduration 20000 -i rtsp://USER:PASSWORD@CAMERA1IP:PORT/videoMain -ss 00:00:02 -frames 1 /dev/shm/GetCams/Xwebc3-temp.jpeg &
-timeout --kill-after=15 15 avconv -rtsp_transport tcp -analyzeduration 20000 -i rtsp://USER:PASSWORD@CAMERA2IP:PORT/videoMain -ss 00:00:01 -frames 1 /dev/shm/GetCams/Xwebc2-temp.jpeg
-) &
-timeout --kill-after=15 15 avconv -f video4linux2 -s 1920x1080 -i /dev/video0 -ss 00:00:03 -frames 1 /dev/shm/GetCams/Xwebc1-temp.jpeg
+curl "http://CAMIP:PORT/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=USER&pwd=PASSWORD" > /dev/shm/GetCams/Xwebc3-temp.jpeg &
+curl "http://CAMIP:PORT/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=USER&pwd=PASSWORD" > /dev/shm/GetCams/Xwebc2-temp.jpeg)
+timeout --kill-after=15 15 avconv -f video4linux2 -s 1920x1080 -i /dev/video0 -ss 00:00:02 -frames 1 /dev/shm/GetCams/Xwebc1-temp.jpeg
 
 MainLabel="$(date +'%Y-%m-%d %H:%M:%S') -- OJC ${LOJCTF}F -- IN ${LCaseTF}F -- CPU ${LCPUTF}F -- ${LUStatus}"
 
