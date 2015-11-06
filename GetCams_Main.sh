@@ -46,7 +46,7 @@ fi
 convert \( /dev/shm/GetCams/Xwebc1-temp.jpeg +append \) \
  \( /dev/shm/GetCams/Xwebc2-temp.jpeg /dev/shm/GetCams/Xwebc3-temp.jpeg +append \) \
  \( -gravity south -background Black -pointsize 48 -fill Yellow label:"${MainLabel}" +append \) \
- -background Black -append -resize 75% /dev/shm/GetCams/webcX-temp.jpeg
+ -background Black -append -resize 1152x1006! /dev/shm/GetCams/webcX-temp.jpeg
 
 (
 rm /dev/shm/GetCams/Xwebc*-temp.jpeg &
