@@ -14,7 +14,7 @@ echo $CaseTF > /dev/shm/GetCams/CaseTF.txt
 echo $CPUTF > /dev/shm/GetCams/CPUTF.txt
 echo $UStatus > /dev/shm/GetCams/LUStatus.txt
 
-convert -delay 15 -loop 0 -resize 20% /dev/shm/GetCams/PushTmp/*.jpeg /var/www/Get/Cams/_Loop.gif
+convert -delay 15 -loop 0 -resize 25% /dev/shm/GetCams/PushTmp/*.jpeg /var/www/Get/Cams/_Loop.gif
 zip -9 /var/www/Get/Cams/Archive/push_$(date +'%y%m%d%H%M%S').zip /dev/shm/GetCams/PushTmp/*.jpeg
 chown -R www-data /var/www/Get/Cams/
 
