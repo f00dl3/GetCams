@@ -4,7 +4,6 @@ rm /var/www/Get/Cams/Archive/*.zip
 CamImgQty=$(ls -l /dev/shm/mp4tmp/*.jpeg | wc -l)
 CamSizeSum=$(du -c /dev/shm/mp4tmp/*.jpeg | sed -n "\$s/\\t.*//p")
 sh /home/USER/Scripts/Sequence.sh /dev/shm/mp4tmp/ jpeg
-mogrify -resize 1440x1257! /dev/shm/mp4tmp/*.jpeg
 avconv -framerate 24 -i /dev/shm/mp4tmp/%05d.jpeg -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" /var/www/Get/Cams/MP4/$(date -d "yesterday 12:00" +'%y%m%d').mp4 2> /dev/shm/mp4tmp/avconv.log
 CamMP4Size=$(du -c /var/www/Get/Cams/MP4/$(date -d "yesterday 12:00" +'%y%m%d').mp4 | sed -n "\$s/\\t.*//p")
 (ls /var/www/Get/Cams/MP4/*.mp4 -t | head -n 365; ls /var/www/Get/Cams/MP4/*.mp4)|sort|uniq -u|xargs rm
