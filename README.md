@@ -1,12 +1,14 @@
 # GetCams
+
 IP/USB Camera shell script
+
+Captures camera still shots every 2 seconds, writes them to disk every 2 minutes, and creates an animated GIF you can display in a web interface. All scripts are stored in memory to increase performance and reduce disk wear.
 
 This will require a few additional packages -
 
- avconv, imagemagick, postfix, others. 
+ avconv, imagemagick, postfix, snmpd, apcupsd, possibly others. 
 
 User names, passwords, and email addresses have been edited out of the scripts. Adjust the scripts as you wish.
-
 
 - GetCams.sh should be set to run on boot in crontab.
 - GetCams_GIF.sh should be set to run every 2 minutes in crontab.
