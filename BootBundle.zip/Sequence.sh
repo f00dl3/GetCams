@@ -1,3 +1,5 @@
+#!/bin/bash
+
 Path=$1
 FileType=$2
 
