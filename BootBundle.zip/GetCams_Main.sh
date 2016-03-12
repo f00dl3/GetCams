@@ -19,9 +19,9 @@ curl --max-time 3 "http://CAMERAIP:PORT/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&u
 
 #Grab camera images from a USB webcam.
 
-if [ -e "/dev/video0" ]; then
-	timeout --kill-after=15 15 avconv -f video4linux2 -s 1920x1080 -i /dev/video0 -ss 00:00:01.0 -frames 1 /dev/shm/GetCams/Xwebc1-temp.jpeg
-	else timeout --kill-after=15 15 avconv -f video4linux2 -s 1920x1080 -i /dev/video1 -ss 00:00:01.0 -frames 1 /dev/shm/GetCams/Xwebc1-temp.jpeg
+if [ -e "/dev/video"* ]; then
+	USBCamRef=$(ls /dev/video*)
+	timeout --kill-after=15 15 avconv -f video4linux2 -s 1920x1080 -i $USBCamRef -ss 00:00:01.0 -frames 1 /dev/shm/GetCams/Xwebc1-temp.jpeg
 fi
 
 MainLabel="$(date +'%Y-%m-%d %H:%M:%S') -- OJC ${LOJCTF}F -- IN ${LCaseTF}F -- CPU ${LCPUTF}F -- ${LUStatus}"
