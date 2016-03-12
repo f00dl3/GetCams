@@ -1,7 +1,7 @@
 # GetCams
 
 IP/USB Camera shell script
--revision 2013-03-12
+-revision 2016-03-12
 
 Captures camera still shots every 2 seconds, writes them to disk every 2 minutes, and creates an animated GIF you can display in a web interface. All scripts are stored in memory to increase performance and reduce disk wear.
 
