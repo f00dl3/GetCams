@@ -15,8 +15,8 @@ UACam2T=$(cat /dev/shm/GetCams/OffCam2T.txt)
 UACam3T=$(cat /dev/shm/GetCams/OffCam3T.txt)
 
 (
-curl --max-time 3 "http://192.168.1.5:88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=IPCamUser&pwd=IPCamPass" > /dev/shm/GetCams/Xwebc3-temp.jpeg &
-curl --max-time 3 "http://192.168.1.6:88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=IPCamUser&pwd=IPCamPass" > /dev/shm/GetCams/Xwebc2-temp.jpeg
+curl --max-time 3 "http://IPCam1Address/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=IPCamUser&pwd=IPCamPass" > /dev/shm/GetCams/Xwebc3-temp.jpeg &
+curl --max-time 3 "http://IPCam2Address/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=IPCamUser&pwd=IPCamPass" > /dev/shm/GetCams/Xwebc2-temp.jpeg
 )
 
 if [ -e "/dev/video"* ]; then
