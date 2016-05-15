@@ -1,7 +1,6 @@
 #!/bin/bash
 # Save your text messaging address in SMS.txt in BootBundle.zip
 
-
 unzip /home/astump/Scripts/BootBundle.zip -d /dev/shm/
 SendTo=$(cat /dev/shm/SMS.txt)
 echo "System was started up at `date +%H:%M` on `date +%m.%d.%Y`" | mail -s "System reboot detected!" $SendTo
@@ -16,6 +15,13 @@ echo "" > /dev/shm/GetCams/GetCams.lock
 
 while true
 do 
-	flock -n /dev/shm/GetCams/GetCams.lock bash /dev/shm/GetCams_Main.sh
-	sleep 0.1
+	(
+		flock -n /dev/shm/GetCams/GetCams.lock bash /dev/shm/GetCams_Main.sh &
+		flock -n /dev/shm/GetCams/GetCamsUSB.lock bash /dev/shm/GetCams_USB.sh
+	)
+	if [ -e "/dev/video"* ]; then
+		sleep 0.1
+	else
+		sleep 0.8
+	fi
 done
