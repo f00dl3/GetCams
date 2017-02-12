@@ -2,7 +2,7 @@
 
 Cam1IP=""
 Cam2IP=""
-Cam2IPWiFi=""
+Cam1IPWiFi=""
 ipCamUser=""
 ipCamPass=""
 mTrigger=250
@@ -15,7 +15,7 @@ curl --max-time 3 "http://"$Cam2IP":88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&us
 )
 
 if [ ! -s /dev/shm/GetCams/Ywebc3-temp.jpeg ]; then
-	curl --max-time 3 "http://"$Cam2IPWiFi":88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=$ipCamUser&pwd=$ipCamPass" > /dev/shm/GetCams/Ywebc3-temp.jpeg
+	curl --max-time 3 "http://"$Cam1IPWiFi":88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=$ipCamUser&pwd=$ipCamPass" > /dev/shm/GetCams/Ywebc3-temp.jpeg
 fi
 
 Nanos=$(date +'%N')
